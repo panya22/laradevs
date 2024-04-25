@@ -3,12 +3,11 @@ import { OnInit } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { DataService } from '../service/data.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator } from '@angular/material/paginator';
-
+import { DataService } from '../service/data.service';
 @Component({
   selector: 'app-crud',
   standalone: true,
