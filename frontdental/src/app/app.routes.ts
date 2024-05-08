@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
-import { CrudComponent } from './crud/crud.component';
-import { NavComponent } from './nav/nav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PatientAppointmentComponent } from './patient-appointment/patient-appointment.component';
+import { AppointmentHistoryComponent } from './appointment-history/appointment-history.component';
 
 export const routes: Routes = [
-  { path: 'crud', component: CrudComponent },
-
-  { path: '', pathMatch: 'full', component: NavComponent },
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'patient-appointment', component: PatientAppointmentComponent},
+  { path: 'appointment-history', component: AppointmentHistoryComponent},
+  { path: '**', component: PageNotFoundComponent}, 
 ];

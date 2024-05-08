@@ -1,4 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+app-root{
+    --light-black: rgb(48, 48, 48, 0.3);
+    --background: white;
+    --light-white: #CFC8C0;
+    --background-color: #263238;
+
+    font-family: 'Inter';
+    display: block;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--background);
+    font-family: 'Inter';
+}

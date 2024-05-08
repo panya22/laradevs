@@ -1,0 +1,18 @@
+<div class="sidebar-logo">
+    <img [src]="imagePath" alt="My Image">
+</div>
+
+<h2 class="flat">Check App</h2>
+
+<ul>
+    @for (item of items; track items) {
+    <li [routerLink] = "item.link">
+        <span class="icon material-symbols-outlined">
+            {{item.icon}}
+        </span>
+        <span class="data">
+            {{item.title}}
+        </span>
+    </li>
+    }
+</ul>

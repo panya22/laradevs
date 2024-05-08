@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { NavComponent } from '../nav/nav.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +11,6 @@ import { DataService } from '../service/data.service';
   selector: 'app-crud',
   standalone: true,
   imports: [
-    NavComponent,
     MatTableModule,
     HttpClientModule,
     MatButtonModule,
@@ -20,11 +18,11 @@ import { DataService } from '../service/data.service';
     MatFormField,
     MatPaginator,
   ],
-  templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.css'],
+  templateUrl: './appointment-history.component.html',
+  styleUrls: ['./appointment-history.component.css'],
   providers: [DataService],
 })
-export class CrudComponent implements OnInit {
+export class AppointmentHistoryComponent implements OnInit {
   protected dataSource!: any;
   protected data!: any;
   protected displayFields: string[] = [

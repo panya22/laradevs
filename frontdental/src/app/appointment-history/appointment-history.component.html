@@ -19,21 +19,22 @@
         <td mat-cell *matCellDef="let e" id="row">{{ e.birthdate }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef id="header"></th>
+        <td mat-cell *matCellDef="let e" id="row">
+          <button mat-flat-button color="primary">UPDATE</button>
+        </td>
+      </ng-container>
+      
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef id="header"></th>
         <td mat-cell *matCellDef="let e" id="row">
           <button mat-flat-button color="accent" (click)="Ondelete(e.id)">
-            <mat-icon>delete</mat-icon>
+               Delete
           </button>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef id="header"></th>
-        <td mat-cell *matCellDef="let e" id="row">
-          <button mat-flat-button color="accent">UPDATE</button>
-        </td>
-      </ng-container>
 
       <ng-container matColumnDef="view">
         <th mat-header-cell *matHeaderCellDef id="header"></th>
