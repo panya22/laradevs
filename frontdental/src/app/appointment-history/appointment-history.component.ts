@@ -8,7 +8,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator } from '@angular/material/paginator';
 import { DataService } from '../service/data.service';
 @Component({
-  selector: 'app-crud',
+  selector: 'app-history',
   standalone: true,
   imports: [
     MatTableModule,
