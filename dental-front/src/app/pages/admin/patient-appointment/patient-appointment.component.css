@@ -1,0 +1,23 @@
+.table {
+  width: 100%;
+  height: 50%; /* For example, change this value to adjust height */
+  overflow-y: auto; /* Add scroll bar if content overflows */
+  margin: 0 auto;
+  border: thick double var(--background-color);
+}
+
+#header {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#row {
+  font-size: 13px;
+  font-weight: light;
+}
+
+#header,
+#row {
+  padding: 10px; /* Adjust the padding value as needed */
+}
+

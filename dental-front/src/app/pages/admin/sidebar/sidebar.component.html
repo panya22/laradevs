@@ -1,0 +1,20 @@
+
+
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <img [src]="imagePath" alt="My Image">
+        <span>CHECK APP</span>
+    </div>
+
+    <hr>
+    <a routerLink="/dashboard" [routerLinkActive]="'active'"><i class="material-symbols-outlined">dashboard</i>Dashboard</a>
+    <a routerLink="/patient-appointment" [routerLinkActive]="'active'"><i class="material-symbols-outlined">event</i>Appointment</a>
+    <a routerLink="/patient-history" [routerLinkActive]="'active'"><i class="material-symbols-outlined">history</i>History</a>
+  </div>
+  
+<div class="main-content container-fluid">
+    <router-outlet></router-outlet>
+</div>
+
+
+
