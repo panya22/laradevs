@@ -14,16 +14,11 @@ return new class extends Migration
     public function up()
     {
       Schema::create('patients_histories', function (Blueprint $table) {
-            $table->unsignedBigInteger('doctors_id')->nullable();
-            $table->foreign('doctors_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->unsignedBigInteger('patients_id')->nullable();
             $table->foreign('patients_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->unsignedBigInteger('appointments_id')->nullable();
-            $table->foreign('appointments_id')->references('id')->on('patients_appointments')->onDelete('cascade');
             $table->id();
-            $table->string('patients_diagnosis');
-            $table->string('patients_treatment');
-            $table->date('diagnosis_date');
+            $table->string('reason');
+            $table->string('status');
             $table->timestamps();
 
         });

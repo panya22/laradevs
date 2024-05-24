@@ -6,9 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator } from '@angular/material/paginator';
-import { DataService } from '../service/data.service';
+import { DataService } from '../../../services/data.service';
+
 @Component({
-  selector: 'app-history',
+  selector: 'app-appointment',
   standalone: true,
   imports: [
     MatTableModule,
@@ -18,20 +19,22 @@ import { DataService } from '../service/data.service';
     MatFormField,
     MatPaginator,
   ],
-  templateUrl: './appointment-history.component.html',
-  styleUrls: ['./appointment-history.component.css'],
+  templateUrl: './pending.component.html',
+  styleUrls: ['./pending.component.css'],
   providers: [DataService],
 })
-export class AppointmentHistoryComponent implements OnInit {
+export class PendingComponent implements OnInit {
   protected dataSource!: any;
   protected data!: any;
   protected displayFields: string[] = [
+    'id',
     'name',
+    'gender',
+    'phone',
     'address',
     'birthdate',
-    'delete',
-    'update',
-    'view',
+    'reason',
+    'status',
   ];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -43,7 +46,7 @@ export class AppointmentHistoryComponent implements OnInit {
   }
 
   protected getData(): void {
-    this.ds.getRequest('loadpatients', '').subscribe((res: any) => {
+    this.ds.getRequest('loadpatients').subscribe((res: any) => {
       console.log(res);
       this.data = res;
       this.dataSource = new MatTableDataSource(this.data);
@@ -52,10 +55,8 @@ export class AppointmentHistoryComponent implements OnInit {
   }
 
   protected Ondelete(id: number): void {
-    this.ds
-      .postRequest(`patients/delete/${id}`, '', null)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    this.ds.postRequest(`patients/delete/${id}`, null).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 }

@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { PatientHistoryComponent} from './pages/admin/patient-history/patient-history.component';
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { AppointmentComponent } from './pages/website/appointment/appointment.component';
+import { PendingComponent } from './pages/admin/pending/pending.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,10 @@ export const routes: Routes = [
             {
                 path: 'patient-history',
                 component: PatientHistoryComponent
+            },
+            {
+                path: 'pending',
+                component: PendingComponent
             }
         ]
     }
