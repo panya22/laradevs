@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DataService } from '../../../services/data.service';
 
 @Component({
-  selector: 'app-history',
+  selector: 'app-appointment',
   standalone: true,
   imports: [
     MatTableModule,
@@ -44,7 +44,7 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   protected getData(): void {
-    this.ds.getRequest('loadpatients', '').subscribe((res: any) => {
+    this.ds.getRequest('loadpatients').subscribe((res: any) => {
       console.log(res);
       this.data = res;
       this.dataSource = new MatTableDataSource(this.data);
@@ -53,10 +53,8 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   protected Ondelete(id: number): void {
-    this.ds
-      .postRequest(`patients/delete/${id}`, '', null)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    this.ds.postRequest(`patients/delete/${id}`, null).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 }

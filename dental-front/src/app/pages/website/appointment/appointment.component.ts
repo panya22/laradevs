@@ -1,12 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DataService } from '../../../services/data.service';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-appointment',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './appointment.component.html',
-  styleUrl: './appointment.component.css'
+  styleUrl: './appointment.component.css',
+  providers: [DataService],
 })
-export class AppointmentComponent {
+export class AppointmentComponent implements OnInit {
+  patientForm: FormGroup;
 
+  constructor(private ds: DataService, private formBuilder: FormBuilder) {
+    this.patientForm = this.formBuilder.group({
+      first_name: [null, Validators.required],
+      last_name: [null, Validators.required],
+      middle_name: [null, Validators.required],
+      extension_name: [null, Validators.required],
+      address: [null, Validators.required],
+      reason: [null, Validators.required],
+      phone: [null, Validators.required],
+      gender: [null, Validators.required],
+      email: [null, Validators.required],
+      password: [null, Validators.required],
+    });
+  }
+
+  ngOnInit(): void {}
+
+  onSubmit(): void {
+    const formData = this.patientForm.value; // Extract the form values
+    console.log(formData);
+
+    this.ds.postRequest('patients/add', formData).subscribe(
+      (res: any) => {
+        console.log(res);
+        // Optionally: Provide user feedback for successful submission
+      },
+      (error: any) => {
+        console.error('Error:', error);
+        // Optionally: Handle error and provide user feedback
+      }
+    );
+  }
 }

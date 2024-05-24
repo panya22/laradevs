@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -7,11 +8,11 @@ export class DataService {
   private url: string = 'http://127.0.0.1:8000/api/';
   constructor(private http: HttpClient) {}
 
-  public postRequest(endPoint: string, param: string, payload: any): any {
-    return this.http.post(this.url + endPoint + param, JSON.stringify(payload));
+  public postRequest(endPoint: string, request: any): any {
+    return this.http.post(this.url + endPoint, request);
   }
 
-  public getRequest(endPoint: string, param?: string): any {
-    return this.http.get(this.url + endPoint + param);
+  public getRequest(endPoint: string): any {
+    return this.http.get(this.url + endPoint);
   }
 }

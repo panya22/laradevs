@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->unsignedBigInteger('doctors_id')->nullable();
-            $table->foreign('doctors_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('middle_name')->nullable();
             $table->string('extension_name')->nullable();
             $table->string('address');
-            $table->date('birthdate');
-            $table->string('email');
+            $table->string('reason');
+            $table->string('phone');
+            $table->string('gender');
+            $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
         });

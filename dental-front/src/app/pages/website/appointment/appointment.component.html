@@ -1,54 +1,121 @@
 <div class="container">
-    <nav>
-      <div class="nav__logo">CHECK APP</div>
-      <ul class="nav__links">
-        <li routerLink="/booking" style="cursor: pointer;">Home</li>
-        <li routerLink="/appointment" ><button class="btn">Appointment</button></li>
-      </ul>
-    </nav>
+  <nav>
+    <div class="nav__logo">CHECK APP</div>
+    <ul class="nav__links">
+      <li routerLink="/booking" style="cursor: pointer">Home</li>
+      <li routerLink="/appointment">
+        <button class="btn">Appointment</button>
+      </li>
+    </ul>
+  </nav>
 
-
-    <section class="form-container">
-        <header>Dental Appointment Schedule</header>
-        <form action="#" class="form">
-          <div class="input-box">
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter full name" required />
+  <section class="form-container">
+    <header>Dental Appointment Schedule</header>
+    <form class="form" [formGroup]="patientForm">
+      <div class="input-box">
+        <label>Email</label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          required
+          formControlName="email"
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          required
+          formControlName="password"
+        />
+        <label>Phone</label>
+        <input
+          type="tel"
+          placeholder="Enter Phone"
+          required
+          formControlName="phone"
+        />
+      </div>
+      <div class="input-box">
+        <label>First Name</label>
+        <input
+          type="text"
+          placeholder="Enter First name"
+          required
+          formControlName="first_name"
+        />
+      </div>
+      <div class="input-box">
+        <label>Last Name</label>
+        <input
+          type="text"
+          placeholder="Enter Last Name"
+          required
+          formControlName="last_name"
+        />
+      </div>
+      <div class="column">
+        <div class="input-box">
+          <label>Middle Name</label>
+          <input
+            type="text"
+            placeholder="Enter Middle Name"
+            required
+            formControlName="middle_name"
+          />
+        </div>
+        <div class="input-box">
+          <label>Extension Name</label>
+          <input
+            type="text"
+            placeholder="Enter birth date"
+            required
+            formControlName="extension_name"
+          />
+        </div>
+      </div>
+      <div class="gender-box">
+        <h3>Gender</h3>
+        <div class="gender-option">
+          <div class="gender">
+            <input
+              formControlName="gender"
+              type="radio"
+              id="check-male"
+              name="gender"
+              value="Male"
+              checked
+            />
+            <label for="check-male">Male</label>
           </div>
-          <div class="input-box">
-            <label>Email Address</label>
-            <input type="text" placeholder="Enter email address" required />
+          <div class="gender">
+            <input
+              formControlName="gender"
+              type="radio"
+              id="check-female"
+              name="gender"
+              value="Female"
+            />
+            <label for="check-female">Female</label>
           </div>
-          <div class="column">
-            <div class="input-box">
-              <label>Phone Number</label>
-              <input type="text" placeholder="Enter phone number" required />
-            </div>
-            <div class="input-box">
-              <label>Birth Date</label>
-              <input type="date" placeholder="Enter birth date" required />
-            </div>
-          </div>
-          <div class="gender-box">
-            <h3>Gender</h3>
-            <div class="gender-option">
-              <div class="gender">
-                <input type="radio" id="check-male" name="gender" checked />
-                <label for="check-male">Male</label>
-              </div>
-              <div class="gender">
-                <input type="radio" id="check-female" name="gender" />
-                <label for="check-female">Female</label>
-              </div>
-            </div>
-          </div>
-          <div class="input-box address">
-            <label>Address</label>
-            <input type="text" placeholder="Enter Complete Address" required />
-            <label>Reason of Dental Appointment</label>
-            <input type="text" placeholder="Please State Your Reason of Dental Appointment" required />
-          </div>
-          <button>Submit</button>
-        </form>
-      </section>
-  </div>
+        </div>
+      </div>
+      <div class="input-box address">
+        <label>Address</label>
+        <input
+          type="text"
+          placeholder="Enter Complete Address"
+          formControlName="address"
+          required
+        />
+        <label>Reason of Dental Appointment</label>
+        <input
+          type="text"
+          formControlName="reason"
+          placeholder="Please State Your Reason of Dental Appointment"
+          required
+        />
+      </div>
+      <button class="buttons" type="submit" (click)="onSubmit()">SUBMIT</button>
+    </form>
+  </section>
+</div>
