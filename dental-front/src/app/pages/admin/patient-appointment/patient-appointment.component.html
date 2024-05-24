@@ -10,6 +10,11 @@
 
   <div class="table">
     <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef id="header">PATIENT ID</th>
+        <td mat-cell *matCellDef="let e" id="row">{{ e.id }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef id="header">NAME</th>
         <td mat-cell *matCellDef="let e" id="row">
@@ -18,37 +23,16 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef id="header">ADDRESS</th>
-        <td mat-cell *matCellDef="let e" id="row">{{ e.address }}</td>
+      <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef id="header">REASON</th>
+        <td mat-cell *matCellDef="let e" id="row">{{ e.reason }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="birthdate">
-        <th mat-header-cell *matHeaderCellDef id="header">BIRTHDATE</th>
-        <td mat-cell *matCellDef="let e" id="row">{{ e.birthdate }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef id="header"></th>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef id="header">STATUS</th>
         <td mat-cell *matCellDef="let e" id="row">
-          <button mat-flat-button color="primary">UPDATE</button>
-        </td>
-      </ng-container>
-      
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef id="header"></th>
-        <td mat-cell *matCellDef="let e" id="row">
-          <button mat-flat-button color="accent" (click)="Ondelete(e.id)">
-               Delete
-          </button>
-        </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="view">
-        <th mat-header-cell *matHeaderCellDef id="header"></th>
-        <td mat-cell *matCellDef="let e" id="row">
-          <button mat-flat-button color="accent">VIEW</button>
+          <button mat-flat-button style="color: white; background-color: green; border-radius: 5px; width: 80px; height: 50px;">DONE SCHEDULE</button>
         </td>
       </ng-container>
 

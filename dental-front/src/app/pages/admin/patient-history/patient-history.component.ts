@@ -27,12 +27,10 @@ export class PatientHistoryComponent implements OnInit {
   protected dataSource!: any;
   protected data!: any;
   protected displayFields: string[] = [
+    'id',
     'name',
-    'address',
-    'birthdate',
-    'delete',
-    'update',
-    'view',
+    'reason',
+    'actions',
   ];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
