@@ -25,6 +25,16 @@ import { DataService } from '../../../services/data.service';
 })
 export class PendingComponent implements OnInit {
   protected dataSource!: any;
+  selected: {
+    first_name: string;
+    last_name: string;
+    middle_name: string;
+    extension_name: string;
+    address: string;
+    reason: string;
+    phone: string;
+    gender: string;
+  } | null = null;
   protected data!: any;
   protected displayFields: string[] = [
     'id',
@@ -32,7 +42,6 @@ export class PendingComponent implements OnInit {
     'gender',
     'phone',
     'address',
-    'birthdate',
     'reason',
     'status',
   ];
@@ -58,5 +67,28 @@ export class PendingComponent implements OnInit {
     this.ds.postRequest(`patients/delete/${id}`, null).subscribe((res: any) => {
       console.log(res);
     });
+  }
+
+  insertHistory(
+    first_name: string,
+    last_name: string,
+    middle_name: string,
+    extension_name: string,
+    address: string,
+    reason: string,
+    phone: string,
+    gender: string
+  ): void {
+    this.selected = {
+      first_name,
+      last_name,
+      middle_name,
+      extension_name,
+      address,
+      reason,
+      phone,
+      gender,
+    };
+    console.log(this.selected);
   }
 }

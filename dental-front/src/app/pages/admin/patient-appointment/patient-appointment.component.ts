@@ -25,13 +25,9 @@ import { DataService } from '../../../services/data.service';
 })
 export class PatientAppointmentComponent implements OnInit {
   protected dataSource!: any;
+  protected selectedEmail!: any;
   protected data!: any;
-  protected displayFields: string[] = [
-    'id',
-    'name',
-    'reason',
-    'status',
-  ];
+  protected displayFields: string[] = ['id', 'name', 'reason', 'status'];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
