@@ -32,3 +32,8 @@ Route::post('patientsque/add', [PatientsAppointmentsController::class, 'fromQue'
 Route::get('patientsque/approved', [PatientsAppointmentsController::class, 'loadQue']);
 Route::get('patientsHistory', [PatientsHistoryController::class, 'loadHistory']);
 Route::post('patientsHistory/add', [PatientsHistoryController::class, 'history']);
+
+
+
+//dashboard
+Route::get('dashboard', [PatientsAppointmentsController::class, 'loadDashboard']);

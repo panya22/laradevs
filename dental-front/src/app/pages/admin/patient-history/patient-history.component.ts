@@ -26,12 +26,7 @@ import { DataService } from '../../../services/data.service';
 export class PatientHistoryComponent implements OnInit {
   protected dataSource!: any;
   protected data!: any;
-  protected displayFields: string[] = [
-    'id',
-    'name',
-    'reason',
-    'actions',
-  ];
+  protected displayFields: string[] = ['id', 'name', 'reason', 'actions'];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 

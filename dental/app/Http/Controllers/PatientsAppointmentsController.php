@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patients;
 use App\Models\PatientsAppointments;
 use Illuminate\Http\Request;
 
@@ -28,5 +29,14 @@ class PatientsAppointmentsController extends Controller
         $patient->save();
 
         return response()->json(['message' => 'successful']);
+    }
+
+
+     public function loadDashboard()
+    {
+        // Count the total number of distinct patients
+        $totalApproval= Patients::distinct('id')->count('id');
+        $totalPatient = PatientsAppointments::distinct('id')->count('id');
+        return response()->json(['totalPatient' => $totalPatient, 'totalApproval' => $totalApproval]);
     }
 }

@@ -12,7 +12,7 @@
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef id="header">PATIENT ID</th>
-        <td mat-cell *matCellDef="let e" id="row">{{ e.id }}</td>
+        <td mat-cell *matCellDef="let e" id="row">{{ e.patients_id }}</td>
       </ng-container>
 
       <ng-container matColumnDef="name">
@@ -42,7 +42,7 @@
             "
             (click)="
               insertHistory(
-                e.id,
+                e.patients_id,
                 e.first_name,
                 e.last_name,
                 e.middle_name,

@@ -90,6 +90,8 @@ export class PendingComponent implements OnInit {
       .postRequest('patientsque/add', this.selected)
       .subscribe((res: any) => {
         console.log(res);
+        this.data = this.data.filter((item: any) => item.id !== id);
+        this.dataSource.data = this.data;
       });
   }
 }

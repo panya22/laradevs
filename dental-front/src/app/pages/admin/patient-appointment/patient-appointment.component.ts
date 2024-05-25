@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField } from '@angular/material/form-field';
@@ -61,7 +61,7 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   insertHistory(
-    id: any,
+    patients_id: any,
     first_name: string,
     last_name: string,
     middle_name: string,
@@ -69,7 +69,7 @@ export class PatientAppointmentComponent implements OnInit {
     reason: string
   ): void {
     this.selected = {
-      patients_id: id,
+      patients_id: patients_id,
       first_name,
       last_name,
       middle_name,
@@ -82,6 +82,7 @@ export class PatientAppointmentComponent implements OnInit {
       .postRequest('patientsHistory/add', this.selected)
       .subscribe((res: any) => {
         console.log(res);
+        this.data = res;
       });
   }
 }
