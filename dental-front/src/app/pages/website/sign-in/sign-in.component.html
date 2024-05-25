@@ -1,28 +1,31 @@
-<div class="wrapper">
-    <div class="card-switch">
-        <label class="switch">
-           <input type="checkbox" class="toggle">
-           <span class="slider"></span>
-           <span class="card-side"></span>
-           <div class="flip-card__inner">
-              <div class="flip-card__front">
-                 <div class="title">Log in</div>
-                 <form class="flip-card__form" action="">
-                    <input class="flip-card__input" name="email" placeholder="Email" type="email">
-                    <input class="flip-card__input" name="password" placeholder="Password" type="password">
-                    <button routerLink="/history" class="flip-card__btn">Let's go!</button>
-                 </form>
-              </div>
-              <div class="flip-card__back">
-                 <div class="title">Sign up</div>
-                 <form class="flip-card__form" action="">
-                    <input class="flip-card__input" placeholder="Name" type="name">
-                    <input class="flip-card__input" name="email" placeholder="Email" type="email">
-                    <input class="flip-card__input" name="password" placeholder="Password" type="password">
-                    <button class="flip-card__btn">Confirm!</button>
-                 </form>
-              </div>
-           </div>
-        </label>
-    </div>   
-</div>
+<div class="parent">
+   <div class="auth-container">
+     <div class="login" *ngIf="showLogin">
+       <div class="login-triangle"></div>
+ 
+       <h2 class="login-header">Log in</h2>
+ 
+       <form class="login-container">
+         <p><input type="email" name="userName" [(ngModel)]="loginObj.userName" placeholder="Email"></p>
+         <p><input type="password" name="password" [(ngModel)]="loginObj.password" placeholder="Password"></p>
+         <p><input type="submit" (click)="onLogin()" value="Log in"></p>
+       </form>
+       <p class="toggle-link" (click)="toggleForm()">Don't have an account? Sign up</p>
+     </div>
+ 
+     <div class="signup" *ngIf="!showLogin">
+       <div clas  s="login-triangle"></div>
+ 
+       <h2 class="login-header">Sign up</h2>
+ 
+       <form class="login-container">
+         <p><input type="text" name="fullName" [(ngModel)]="signUpObj.fullName" placeholder="Full Name"></p>
+         <p><input type="email" name="email" [(ngModel)]="signUpObj.userName" placeholder="Email"></p>
+         <p><input type="password" name="password" [(ngModel)]="signUpObj.password" placeholder="Password"></p>
+         <p><input type="submit" (click)="onSignUp()" value="Sign up"></p>
+       </form>
+       <p class="toggle-link" (click)="toggleForm()">Already have an account? Log in</p>
+     </div>
+   </div>
+ </div>
+ 
