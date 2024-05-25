@@ -13,29 +13,6 @@
     <header>Dental Appointment Schedule</header>
     <form class="form" [formGroup]="patientForm">
       <div class="input-box">
-        <label>Email</label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          required
-          formControlName="email"
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          required
-          formControlName="password"
-        />
-        <label>Phone</label>
-        <input
-          type="tel"
-          placeholder="Enter Phone"
-          required
-          formControlName="phone"
-        />
-      </div>
-      <div class="input-box">
         <label>First Name</label>
         <input
           type="text"
@@ -107,6 +84,15 @@
           formControlName="address"
           required
         />
+
+        <label>Phone</label>
+        <input
+          type="tel"
+          placeholder="Enter Phone"
+          required
+          formControlName="phone"
+        />
+
         <label>Reason of Dental Appointment</label>
         <input
           type="text"
@@ -115,6 +101,7 @@
           required
         />
       </div>
+
       <button class="buttons" type="submit" (click)="onSubmit()">SUBMIT</button>
     </form>
   </section>

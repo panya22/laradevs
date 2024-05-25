@@ -42,7 +42,7 @@ export class PatientHistoryComponent implements OnInit {
   }
 
   protected getData(): void {
-    this.ds.getRequest('loadpatients').subscribe((res: any) => {
+    this.ds.getRequest('patientsHistory').subscribe((res: any) => {
       console.log(res);
       this.data = res;
       this.dataSource = new MatTableDataSource(this.data);

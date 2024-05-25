@@ -25,7 +25,15 @@ import { DataService } from '../../../services/data.service';
 })
 export class PatientAppointmentComponent implements OnInit {
   protected dataSource!: any;
-  protected selectedEmail!: any;
+  selected: {
+    patients_id: any;
+    first_name: string;
+    last_name: string;
+    middle_name: string;
+    extension_name: string;
+    reason: string;
+    history: boolean;
+  } | null = null;
   protected data!: any;
   protected displayFields: string[] = ['id', 'name', 'reason', 'status'];
 
@@ -38,7 +46,7 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   protected getData(): void {
-    this.ds.getRequest('loadpatients').subscribe((res: any) => {
+    this.ds.getRequest('patientsque/approved').subscribe((res: any) => {
       console.log(res);
       this.data = res;
       this.dataSource = new MatTableDataSource(this.data);
@@ -50,5 +58,30 @@ export class PatientAppointmentComponent implements OnInit {
     this.ds.postRequest(`patients/delete/${id}`, null).subscribe((res: any) => {
       console.log(res);
     });
+  }
+
+  insertHistory(
+    id: any,
+    first_name: string,
+    last_name: string,
+    middle_name: string,
+    extension_name: string,
+    reason: string
+  ): void {
+    this.selected = {
+      patients_id: id,
+      first_name,
+      last_name,
+      middle_name,
+      extension_name,
+      reason,
+      history: true,
+    };
+    console.log(this.selected);
+    this.ds
+      .postRequest('patientsHistory/add', this.selected)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 }

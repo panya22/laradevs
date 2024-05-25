@@ -26,12 +26,13 @@ import { DataService } from '../../../services/data.service';
 export class PendingComponent implements OnInit {
   protected dataSource!: any;
   selected: {
+    patients_id: any;
     first_name: string;
     last_name: string;
     middle_name: string;
     extension_name: string;
     reason: string;
-    status: boolean
+    status: boolean;
   } | null = null;
   protected data!: any;
   protected displayFields: string[] = [
@@ -67,26 +68,28 @@ export class PendingComponent implements OnInit {
     });
   }
 
-  insertHistory(
+  insertAppointment(
+    id: any,
     first_name: string,
     last_name: string,
     middle_name: string,
     extension_name: string,
-    reason: string,
+    reason: string
   ): void {
     this.selected = {
+      patients_id: id,
       first_name,
       last_name,
       middle_name,
       extension_name,
       reason,
-      status:true
+      status: true,
     };
     console.log(this.selected);
-    this.ds.postRequest('patientsque/add', this.selected).subscribe(
-      (res: any) => {
+    this.ds
+      .postRequest('patientsque/add', this.selected)
+      .subscribe((res: any) => {
         console.log(res);
-        // Optionally: Provide user feedback for successful submission
-      })
-    }
+      });
+  }
 }

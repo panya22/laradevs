@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-      Schema::create('patients_histories', function (Blueprint $table) {
+        Schema::create('patients_histories', function (Blueprint $table) {
             $table->unsignedBigInteger('patients_id')->nullable();
             $table->foreign('patients_id')->references('id')->on('patients')->onDelete('cascade');
             $table->id();
+            $table->string('first_name');
+            $table->string('middle_name');
+            $table->string('last_name');
+            $table->string('extension_name');
             $table->string('reason');
-            $table->string('status');
+            $table->boolean('history');
             $table->timestamps();
-
         });
     }
 

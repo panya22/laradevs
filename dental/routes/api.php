@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\PatientsAppointmentsController;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\PatientsHistoryController;
 use App\Models\Patients;
+use App\Models\PatientsHistory;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,6 @@ Route::get('loadpatients', [PatientsController::class, 'patients']);
 Route::post('patients/delete/{id}', [PatientsController::class, 'patientsdelete']);
 Route::post('patients/add', [PatientsController::class, 'addPatient']);
 Route::post('patientsque/add', [PatientsAppointmentsController::class, 'fromQue']);
+Route::get('patientsque/approved', [PatientsAppointmentsController::class, 'loadQue']);
+Route::get('patientsHistory', [PatientsHistoryController::class, 'loadHistory']);
+Route::post('patientsHistory/add', [PatientsHistoryController::class, 'history']);
