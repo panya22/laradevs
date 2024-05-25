@@ -34,8 +34,6 @@ class PatientsController extends Controller
           $patient->reason = $request->reason;
           $patient->phone = $request->phone;
           $patient->gender = $request->gender;
-          $patient->email = $request->email;
-          $patient->password = $request->password;
 
           $patient->save();
 

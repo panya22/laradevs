@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\PatientsAppointmentsController;
 use App\Http\Controllers\PatientsController;
 use App\Models\Patients;
 
@@ -21,7 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('doctors', [DoctorsController::class, 'getalldoctors']);
+
 Route::get('loadpatients', [PatientsController::class, 'patients']);
 Route::post('patients/delete/{id}', [PatientsController::class, 'patientsdelete']);
 Route::post('patients/add', [PatientsController::class, 'addPatient']);
+Route::post('patientsque/add', [PatientsAppointmentsController::class, 'fromQue']);

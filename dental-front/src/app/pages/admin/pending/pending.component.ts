@@ -30,10 +30,8 @@ export class PendingComponent implements OnInit {
     last_name: string;
     middle_name: string;
     extension_name: string;
-    address: string;
     reason: string;
-    phone: string;
-    gender: string;
+    status: boolean
   } | null = null;
   protected data!: any;
   protected displayFields: string[] = [
@@ -74,21 +72,21 @@ export class PendingComponent implements OnInit {
     last_name: string,
     middle_name: string,
     extension_name: string,
-    address: string,
     reason: string,
-    phone: string,
-    gender: string
   ): void {
     this.selected = {
       first_name,
       last_name,
       middle_name,
       extension_name,
-      address,
       reason,
-      phone,
-      gender,
+      status:true
     };
     console.log(this.selected);
-  }
+    this.ds.postRequest('patientsque/add', this.selected).subscribe(
+      (res: any) => {
+        console.log(res);
+        // Optionally: Provide user feedback for successful submission
+      })
+    }
 }

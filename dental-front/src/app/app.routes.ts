@@ -7,6 +7,9 @@ import { PatientHistoryComponent} from './pages/admin/patient-history/patient-hi
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { AppointmentComponent } from './pages/website/appointment/appointment.component';
 import { PendingComponent } from './pages/admin/pending/pending.component';
+import { SignInComponent } from './pages/website/sign-in/sign-in.component';
+import { HistoryComponent } from './pages/website/history/history.component';
+
 
 export const routes: Routes = [
     {
@@ -26,7 +29,14 @@ export const routes: Routes = [
         path: 'appointment',
         component: AppointmentComponent,
     },
-
+    {
+        path: 'sign-in',
+        component: SignInComponent,
+    },
+    {
+        path: 'history',
+        component: HistoryComponent,
+    },
     {
         path: '',
         component: SidebarComponent,

@@ -26,8 +26,6 @@ export class AppointmentComponent implements OnInit {
       reason: [null, Validators.required],
       phone: [null, Validators.required],
       gender: [null, Validators.required],
-      email: [null, Validators.required],
-      password: [null, Validators.required],
     });
   }
 
