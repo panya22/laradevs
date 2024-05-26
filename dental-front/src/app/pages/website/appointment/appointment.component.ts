@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,7 +17,11 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppointmentComponent implements OnInit {
   patientForm: FormGroup;
 
-  constructor(private ds: DataService, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private ds: DataService,
+    private formBuilder: FormBuilder
+  ) {
     this.patientForm = this.formBuilder.group({
       first_name: [null, Validators.required],
       last_name: [null, Validators.required],
@@ -38,11 +43,9 @@ export class AppointmentComponent implements OnInit {
     this.ds.postRequest('patients/add', formData).subscribe(
       (res: any) => {
         console.log(res);
-        // Optionally: Provide user feedback for successful submission
       },
       (error: any) => {
         console.error('Error:', error);
-        // Optionally: Handle error and provide user feedback
       }
     );
   }

@@ -1,42 +1,57 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { DataService } from '../../../services/data.service';
+import { OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
+  styleUrl: './sign-in.component.css',
+  providers: [DataService],
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
   showLogin: boolean = true;
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  constructor(private router: Router, private ds: DataService) {}
 
-  loginObj: any = {
-    userName: '',
-    password: ''
-  };
-
-  signUpObj: any = {
-    fullName: '',
-    userName: '',
-    password: ''
-  };
-
-  constructor(private router: Router) {}
+  ngOnInit(): void {}
 
   onLogin() {
-    if (this.loginObj.userName == "patient@gmail.com" && this.loginObj.password == "12345") {
-      this.router.navigateByUrl('/history');
-    } else {
-      alert('Wrong Credentials');
-    }
+    this.ds
+      .postRequest('user/login', { email: this.email, password: this.password })
+      .subscribe(
+        (res: any) => {
+          localStorage.setItem('auth_token', res);
+          this.router.navigate(['history']);
+        },
+        (error: any) => {
+          console.error('Login failed', error);
+        }
+      );
   }
 
   onSignUp() {
-    // Add sign-up logic here
-    alert('Sign-up functionality to be implemented');
+    this.ds
+      .postRequest('user/register', {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      })
+      .subscribe(
+        (res: any) => {
+          this.router.navigate(['/login']);
+        },
+        (error: any) => {
+          console.error('Registration failed', error);
+        }
+      );
   }
 
   toggleForm() {

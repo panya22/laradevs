@@ -2,10 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\PatientsAppointmentsController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\PatientsHistoryController;
+use App\Http\Controllers\UserController;
 use App\Models\Patients;
 use App\Models\PatientsHistory;
 
@@ -20,10 +20,9 @@ use App\Models\PatientsHistory;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-
 
 Route::get('loadpatients', [PatientsController::class, 'patients']);
 Route::post('patients/delete/{id}', [PatientsController::class, 'patientsdelete']);
@@ -37,3 +36,8 @@ Route::post('patientsHistory/add', [PatientsHistoryController::class, 'history']
 
 //dashboard
 Route::get('dashboard', [PatientsAppointmentsController::class, 'loadDashboard']);
+
+//uers log
+Route::post('user/login', [UserController::class, 'login']);
+Route::post('user/register', [UserController::class, 'register']);
+Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');

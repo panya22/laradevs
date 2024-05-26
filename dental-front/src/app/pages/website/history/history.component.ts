@@ -1,37 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { DataService } from '../../../services/data.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [RouterLink, MatTableModule],
+  imports: [RouterLink, MatTableModule, HttpClientModule],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css',
   providers: [DataService],
 })
-export class HistoryComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+export class HistoryComponent implements OnInit {
+  constructor(private router: Router, private ds: DataService) {}
+
+  ngOnInit(): void {}
+
+  onLogout() {
+    const authToken = localStorage.getItem('auth_token');
+
+    // Include the authentication token in the request headers
+    const headers = { Authorization: `Bearer ${authToken}` };
+
+    this.ds.postRequest('logout', { headers }).subscribe((res: any) => {
+      localStorage.removeItem('auth_token');
+      // Navigate to the login page
+      this.router.navigate(['/login']);
+    });
+  }
 }
